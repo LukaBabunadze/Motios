@@ -1,8 +1,11 @@
-import { Text } from "react-native"
+import { Text, View } from "react-native"
+import { TopicItem } from "../components";
 
 export const Menu = () => {
     return(
-        <Text>this is Menu</Text>
+        <View>
+           <TopicItem title="სხეულის ენა" imgUrl="blaa"/> 
+        </View>
     );
 };
 
