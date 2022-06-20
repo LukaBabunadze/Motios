@@ -1,10 +1,11 @@
 import { Text, View } from "react-native"
-import { TopicItem } from "../components";
+import { Search, TopicItem } from "../components/atoms";
 
 export const Menu = () => {
     return(
         <View>
-           <TopicItem title="სხეულის ენა" imgUrl="blaa"/> 
+            <Search />
+            <TopicItem title="სხეულის ენა" imgUrl="blaa"/> 
         </View>
     );
 };
