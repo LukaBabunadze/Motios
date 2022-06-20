@@ -9,13 +9,15 @@ interface itemProps {
 export const TopicItem: FC<itemProps> = ({title, imgUrl}) => {
 
     return(
-        <Pressable style={s.container}>
-            <ImageBackground style={s.backgroundImage} resizeMode='cover' source={{uri: 'https://thumbs.dreamstime.com/b/pedestrians-crossing-road-colorful-illustration-people-all-ages-crosswalk-pedestrian-red-pram-wheelchair-95199391.jpg'}}>
-                <View style={s.textWrapper}>
-                    <Text style={s.textStyle}>{title}</Text>
-                </View>
-            </ImageBackground>
-        </Pressable>
+        <View>
+            <Pressable style={s.container}>
+                <ImageBackground style={s.backgroundImage} resizeMode='cover' source={{uri: 'https://thumbs.dreamstime.com/b/pedestrians-crossing-road-colorful-illustration-people-all-ages-crosswalk-pedestrian-red-pram-wheelchair-95199391.jpg'}}>
+                    <View style={s.textWrapper}>
+                        <Text style={s.textStyle}>{title}</Text>
+                    </View>
+                </ImageBackground>
+            </Pressable>
+        </View>
     );
 }
 
@@ -27,7 +29,8 @@ const s = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 20,
         borderRadius: 20,
-        overflow: 'hidden',
+        elevation: 30,
+        overflow: 'hidden'
     },
     backgroundImage: {
         height: '100%',
