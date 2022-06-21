@@ -1,8 +1,9 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet } from "react-native";
 import { Feather } from '@expo/vector-icons';
+import { FC } from "react";
 
 interface search {
-    searchValue: string | number;
+    searchValue: string;
 }
 
 
