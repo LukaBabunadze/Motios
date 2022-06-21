@@ -49,5 +49,6 @@ const s = StyleSheet.create({
         paddingHorizontal: 10,
         fontWeight: '500',
         fontSize: 15,
+        color: 'white',
     }
 })
