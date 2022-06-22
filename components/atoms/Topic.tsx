@@ -31,7 +31,12 @@ export const Topic = () => {
                     <Pressable 
                         key={item.key} 
                         onPress={() => chooseHandler(item.key)} 
-                        style={[s.topicButton, {backgroundColor: `${item.color}`}]}
+                        style={
+                            topicIsChosen === item.key ? 
+                            [s.topicButton, {backgroundColor: `${item.color}`}, s.chosenTopicButton] 
+                            : 
+                            [s.topicButton, {backgroundColor: `${item.color}`}]
+                        }
                     >
                         <Text style={s.title}>{item.title}</Text>
                     </Pressable>
@@ -85,5 +90,8 @@ const s = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
+    },
+    chosenTopicButton: {
+        height: 35,
     }
 })
