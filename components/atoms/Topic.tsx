@@ -1,97 +1,48 @@
-import { useState } from "react";
-import { View, Text, Pressable, Button, StyleSheet, Modal } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
+import { FC } from "react";
+import { Text, View, StyleSheet, Pressable, ImageBackground } from "react-native"
 
-const testSorting = [
-    {title: 'მარტივი', key: 1, color: 'red'},
-    {title: 'საშუალო', key: 2, color: 'green'},
-    {title: 'რთული', key: 3, color: 'blue'},
-];
+interface TopicProps {
+    title: string,
+    imgUrl?: string | undefined,
+}
 
-export const Topic = () => {
-
-    const [isOpen, setIsOpen] = useState(false);
-    const [topicIsChosen, setTopicIsChosen] = useState<number>();
-
-    const pressHandler = () => {
-        setIsOpen(!isOpen);
-    }
-
-    const chooseHandler = (key: number) => {
-        setTopicIsChosen(key);  
-    }
-
+export const Topic: FC<TopicProps> = ({title, imgUrl}) => {
     return(
-        <View style={s.container}>
-            <Pressable onPress={pressHandler} style={s.button}>
-                <Text>ტესტი</Text>
+        <View>
+            <Pressable style={s.container}>
+                <ImageBackground style={s.image} resizeMode={'cover'} source={{uri: `${imgUrl}`}}/>
+                <Text style={s.title}>
+                    {title}
+                </Text>
             </Pressable>
-            <View style={isOpen ? s.modalWrapper : s.modalClosed}>
-                <FlatList contentContainerStyle={s.flatlist} data={testSorting} horizontal showsHorizontalScrollIndicator={false} renderItem={({item}) => (
-                    <Pressable 
-                        key={item.key} 
-                        onPress={() => chooseHandler(item.key)} 
-                        style={
-                            topicIsChosen === item.key ? 
-                            [s.topicButton, {backgroundColor: `${item.color}`}, s.chosenTopicButton] 
-                            : 
-                            [s.topicButton, {backgroundColor: `${item.color}`}]
-                        }
-                    >
-                        <Text style={s.title}>{item.title}</Text>
-                    </Pressable>
-                )}/>
-            </View>
         </View>
     );
-}
+};
 
 const s = StyleSheet.create({
     container: {
-        alignSelf: 'center',
-        width: '90%',
-        marginTop: 20,
-        height: 60,
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-    },
-    button: {
-        width: 100,
-        height: 38,
+        height: 200,
+        width: 180,
+        marginRight: 10,
+        marginVertical: 5,
+        backgroundColor: 'red',
+        flexDirection: 'column',
         justifyContent: 'center',
-        borderRadius: 30,
-        backgroundColor: 'white',
-        elevation: 4,
-        alignItems: 'center',
+        borderRadius: 20,
+        overflow: 'hidden',
+        elevation: 2,
+        marginLeft: 7,
     },
-    modalWrapper: {
-        flex: 1,
+    image: {
         height: '100%',
-    },
-    modalClosed: {
-        display: 'none',
-    },
-    topicButton: {
-        height: 30,
-        paddingHorizontal: 10,
-        justifyContent: 'center',
-        borderRadius: 40,
-        backgroundColor: 'white',
-        elevation: 4,
-        alignItems: 'center',
+        width: '100%',
     },
     title: {
-        fontSize: 12,
-    },
-    flatlist: {
-        height: '100%',
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-    },
-    chosenTopicButton: {
-        height: 35,
+        backgroundColor: 'yellow',
+        position: 'absolute',
+        bottom: 15,
+        alignSelf: 'center',
     }
 })
+
+
